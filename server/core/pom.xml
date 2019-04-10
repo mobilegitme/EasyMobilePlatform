@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.emp.server</groupId>
+    <artifactId>server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>core</artifactId>
+  <packaging>pom</packaging>
+  <name>Core</name>
+  <modules>
+  	<module>documentation</module>
+    <module>core-lib</module>
+    <module>core-protocol-lib</module>
+    <module>datasource-lib</module>
+    <module>service-base-lib</module>
+    <module>boot-lib</module>
+    <module>management-lib</module>
+    <module>single-sign-on</module>
+  </modules>
+</project>
