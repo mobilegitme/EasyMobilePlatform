@@ -14,4 +14,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="action_share">Share</string>
+    <string name="sign_out">Sign out</string>
+    <string name="title_activity_share">ShareActivity</string>
 </resources>
