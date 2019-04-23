@@ -7,9 +7,8 @@
     <artifactId>core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.emp.server</groupId>
   <artifactId>core-protocol-lib</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>core-protocol-lib</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -22,28 +21,58 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+	<dependency>
+	    <groupId>org.xolstice.maven.plugins</groupId>
+	    <artifactId>protobuf-maven-plugin</artifactId>
+	    <version>0.6.1</version>
+	</dependency>
     <dependency>
     	<groupId>com.google.protobuf</groupId>
     	<artifactId>protobuf-java</artifactId>
-    	<version>3.0.0</version>
+    	<version>3.7.1</version>
+    	<scope>compile</scope>
     </dependency>
   </dependencies>
   <build>
+    <extensions>
+      <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>1.6.0</version>
+      </extension>
+    </extensions>
   	<plugins>
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>build-helper-maven-plugin</artifactId>
+			<version>3.0.0</version>
+			<executions>
+				<execution>
+					<id>add-source</id>
+					<phase>generate-sources</phase>
+					<goals>
+						<goal>add-source</goal>
+					</goals>
+					<configuration>
+						<sources>
+							<source>${project.build.directory}/generated-sources/protobuf/java/</source>
+						</sources>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
   		<plugin>
 	      <groupId>org.xolstice.maven.plugins</groupId>
 	      <artifactId>protobuf-maven-plugin</artifactId>
 	      <version>0.6.1</version>
 	      <configuration>
-	        <protocArtifact>com.google.protobuf:protoc:3.1.0:exe:${os.detected.classifier}</protocArtifact>
-	        <pluginId>grpc-java</pluginId>
-	        <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.0.1:exe:${os.detected.classifier}</pluginArtifact>
+          	<protocArtifact>com.google.protobuf:protoc:3.7.1:exe:${os.detected.classifier}</protocArtifact>
+  			<checkStaleness>false</checkStaleness>
 	      </configuration>
 	      <executions>
 	        <execution>
 	          <goals>
 	            <goal>compile</goal>
-	            <goal>compile-custom</goal>
 	          </goals>
 	        </execution>
 	      </executions>
