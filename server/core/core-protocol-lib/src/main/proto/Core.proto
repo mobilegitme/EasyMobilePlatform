@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package com.groupcmg.core.messages;
+
+message C2SMessage {
+	enum Type {
+		DEFAULT = 0;
+		CONNECT_REQUEST = 1000;
+	}
+	message Base {
+		string name = 1;
+		Type commandValue = 2;
+	}
+	
+	message ConnectRequest {
+		Base ConnectRequest = 1;
+		string UserName = 2; // user's login name
+		string Password = 3; // User's password
+		string PasswordToken = 4; // token sent instead of user's password
+		string OpaqueData = 5; // opaque data sent by server in previous connect response message
+		string TransportEncryptionKey = 6; // 16-byte encryption key encoded as a Base64 string. If no key is passed, encryption is not enabled
+		string SoftwareType = 7; // sku used for forced upgrade
+		string SoftwareVersion = 8; // software version of the client app
+		string ISOLanguage = 9; // ISO standard language code
+		string ISOCounry = 10; // ISO standard country code
+		string FMPId = 11; // id for the user. Not sent by the client. Filled in by the Security Service
+		string DeviceOEM = 12; // Manufacturer of the client device
+		string DeviceType = 13; // Device model identifier
+		string DeviceId = 14; // Unique identifier for the client device. e.g., IMEI | ESN
+		string OrganizationId = 15;
+		string UserAgentProfile = 16; 
+	}
+			 
+}
+		
